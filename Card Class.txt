@@ -1,13 +1,11 @@
 
 public class Card
 {
-
    public enum Suit {clubs, diamonds, hearts, spades}; 
    private char value; 
    private Suit suit; 
    private boolean errorFlag; 
    
-
    public Card(char value, Suit suit) {
       this.value = value; 
       this.suit = suit; 
@@ -29,8 +27,7 @@ public class Card
       }
       else {
          return "Invaild"; }
-   }   
-   
+   }  
    public boolean equals(Card card) {
       if(this.suit!= card.suit)
          return false; 
@@ -40,7 +37,6 @@ public class Card
          return false; 
       return true; 
    }
-   
    public static boolean isValid(char value, Suit suit){
       
      char upValue; 
