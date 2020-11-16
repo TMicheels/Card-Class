@@ -1,0 +1,56 @@
+
+public class Card
+{
+
+   public enum Suit {clubs, diamonds, hearts, spades}; 
+   private char value; 
+   private Suit suit; 
+   private boolean errorFlag; 
+   
+
+   public Card(char value, Suit suit) {
+      this.value = value; 
+      this.suit = suit; 
+      errorFlag = true; 
+   }
+   
+   public Suit getSuit() {
+       return suit; 
+   }
+   public char getValue() {
+      return value; 
+   }
+   public boolean getFlag() {
+      return errorFlag; 
+   }
+   public String toString() { 
+      if (errorFlag) {
+         return value + "of" + suit; 
+      }
+      else {
+         return "Invaild"; }
+   }   
+   
+   public boolean equals(Card card) {
+      if(this.suit!= card.suit)
+         return false; 
+      if(this.value!= card.value)
+         return false;
+      if(this.errorFlag!= card.errorFlag)
+         return false; 
+      return true; 
+   }
+   
+   public static boolean isValid(char value, Suit suit){
+      
+     char upValue; 
+     String legalValues = "A23456789TJQK"; 
+     
+     upValue = Character.toUpperCase(value); 
+     
+     if ( legalValues.indexOf(upValue) >= 0 )
+        return true; 
+     else
+        return false; 
+   }
+}
