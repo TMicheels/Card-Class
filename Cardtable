@@ -1,0 +1,45 @@
+class CardTable extends JFrame
+{
+   static int MAX_CARDS_PER_HAND = 56;
+   static int MAX_PLAYERS = 2;  // for now, we only allow 2 person games
+   
+   private int numCardsPerHand;
+   private int numPlayers;
+   
+   public JPanel pnlComputerHand, pnlHumanHand, pnlPlayArea;
+   
+   CardTable(String title, int numCardsPerHand, int numPlayers)
+   {
+      super(title);
+      
+      this.numCardsPerHand = numCardsPerHand;
+      this.numPlayers = numPlayers;
+
+      setLayout(new BorderLayout());
+      
+      TitledBorder border1 = BorderFactory.createTitledBorder("Computer Hand");
+      pnlComputerHand = new JPanel(new GridLayout(1, numCardsPerHand));
+      pnlComputerHand.setBorder(border1);
+      add(pnlComputerHand, BorderLayout.NORTH);
+      
+      TitledBorder border2 = BorderFactory.createTitledBorder("Your Hand");
+      pnlHumanHand = new JPanel(new GridLayout(1, numCardsPerHand));
+      pnlHumanHand.setBorder(border2);
+      add(pnlHumanHand, BorderLayout.SOUTH);
+      
+      TitledBorder border3 = BorderFactory.createTitledBorder("Playing Area");
+      pnlPlayArea = new JPanel(new GridLayout(2, numPlayers));
+      pnlPlayArea.setBorder(border3);
+      add(pnlPlayArea, BorderLayout.CENTER);
+   }
+
+   public int getNumCardsPerHand()
+   {
+      return numCardsPerHand;
+   }
+
+   public int getNumPlayers()
+   {
+      return numPlayers;
+   }
+}
