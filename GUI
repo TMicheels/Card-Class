@@ -1,0 +1,200 @@
+import javax.swing.*;
+import java.awt.*;
+import java.util.Arrays;
+
+class GUICard {
+
+private static Icon[][] iconCards = new ImageIcon[14][4]; 
+private static Icon iconBack;
+static boolean iconsLoaded = false;
+
+public GUICard() {
+if (!iconsLoaded) {
+loadCardIcons();
+iconBack = new ImageIcon(GUICard.class.getResource
+("/resources/images/BK.gif"));
+}
+}
+
+static void loadCardIcons()
+{
+   if (!iconsLoaded)
+   {
+  
+      for (int iValue = 0; iValue < iconCards.length; iValue++)
+      {
+         for (int iSuit = 0; iSuit < iconCards[iValue].length; iSuit++)
+         {
+            String filename = turnIntIntoCardValue(iValue) + 
+                  turnIntIntoCardSuit(iSuit) + ".gif";
+            iconCards[iValue][iSuit] = new ImageIcon(IMG_FILEPATH +
+                  filename);
+         }
+      }
+      //create final back card
+      iconBack = new ImageIcon("images/BK.gif");
+      iconsLoaded = true;
+   }
+}
+
+static String turnIntIntoCardValue(int k)
+{
+   return String.valueOf(Card.valuRanks[k]);
+}
+
+iconsLoaded = true;
+}
+
+static String turnIntIntoCardValue(int k)
+{
+String value = "";
+switch (k) {
+case 0: {
+value = "A";
+}break;
+case 1: {
+value = "2";
+}break;
+case 2: {
+value = "3";
+}break;
+case 3: {
+value = "4";
+}break;
+case 4: {
+value = "5";
+}break;
+case 5: {
+value = "6";
+}break;
+case 6: {
+value = "7";
+}break;
+case 7: {
+value = "8";
+}break;
+case 8: {
+value = "9";
+}break;
+case 9: {
+value = "T";
+}break;
+case 10: {
+value = "J";
+}break;
+case 11: {
+value = "Q";
+}break;
+case 12: {
+value = "K";
+}break;
+case 13: {
+value = "X"; 
+}break;
+}
+
+return value;
+}
+
+static String turnIntIntoCardSuit(int j)
+{
+String value = "";
+switch (j) {
+case 0: {
+value = "C";
+}break;
+case 1: {
+value = "D";
+}break;
+case 2: {
+value = "H";
+}break;
+case 3: {
+value = "S";
+}break;
+}
+
+return value;
+}
+static int valueAsInt(char card) {
+int value = 0;
+switch (card) {
+case 'A': {
+value = 0;
+}break;
+case '2': {
+value = 1;
+}break;
+case '3': {
+value = 2;
+}break;
+case '4': {
+value = 3;
+}break;
+case '5': {
+value = 4;
+}break;
+case '6': {
+value = 5;
+}break;
+case '7': {
+value = 6;
+}break;
+case '8': {
+value = 7;
+}break;
+case '9': {
+value = 8;
+}break;
+case 'T': {
+value = 9;
+}break;
+case 'J': {
+value = 10;
+}break;
+case 'Q': {
+value = 11;
+}break;
+case 'K': {
+value = 12;
+}break;
+case "X":{
+value = 13; 
+}break; 
+}
+
+return value;
+}
+static int suitAsInt(Card.Suit suit) {
+int value = 0;
+switch (suit) {
+case CLUBS: {
+value = 0;
+}break;
+case DIAMONDS: {
+value = 1;
+}break;
+case HEARTS: {
+value = 2;
+}break;
+case SPADES: {
+value = 3;
+}break;
+}
+
+return value;
+}
+
+static public Icon getIcon(Card card) {
+
+return iconCards[valueAsInt(card.getValue())][suitAsInt(card.getSuit())];
+
+}
+static public Icon getBackCardIcon() {
+
+return iconBack;
+
+}
+
+}
+
